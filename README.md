@@ -4,8 +4,33 @@ Another kv thing,
 
 The only reaon this exists is because I need a simple DB for alfred/keyboard maestro tasks.
 
+## Install
+
+```
+  go install github.com/fmeyer/kv@latest
+```
 
 ## Usage
+
+### In a bash script
+
+```
+V=$(kv g -k "$KEY" 2>/dev/null)
+ES=$?
+
+if [ $ES -eq 0 ]; then
+    # do whatver you need with $VALUE
+
+else
+    # exec task store result in $V
+
+    kv s -k "$KEY" -v $V
+fi
+
+```
+
+### HELP
+
 ```
 Usage:
   kv [command]
